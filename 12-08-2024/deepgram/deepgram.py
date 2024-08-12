@@ -2,7 +2,7 @@ import requests
 
 # Replace 'YOUR_API_KEY' with your actual Deepgram API key
 api_key = 'fad099a737d87a33160459e05263e9791462063f'
-audio_file = 'path_to_your_audio_file.wav'
+audio_file = 'C:/Users/ujjwal/Downloads/sound1.sound1.mp3'
 
 headers = {
     'Authorization': f'Token {api_key}',
