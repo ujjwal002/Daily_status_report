@@ -35,3 +35,13 @@ In summary:
     lint:Standard: Runs the linter to check your code.
     lint:fix: Runs the linter with an option to automatically fix issues.
     npm i standard: Installs the standard linter in your project.
+
+# 
+
+"lint": "standard"
+"lint:fix :" standard --fix"
+
+# what is memory storage package
+
+
+  
