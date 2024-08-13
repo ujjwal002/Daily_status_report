@@ -2,8 +2,9 @@
 <html>
 
 <head>
-  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Socket.IO chat</title>
+
   <style>
     body {
       margin: 0;
@@ -50,6 +51,9 @@
       list-style-type: none;
       margin: 0;
       padding: 0;
+      max-height: calc(100vh - 3rem);
+      /* Adjusting for the form at the bottom */
+      overflow-y: auto;
     }
 
     #messages>li {
@@ -67,6 +71,36 @@
   <form id="form" action="">
     <input id="input" autocomplete="off" /><button>Send</button>
   </form>
+
+  <!-- Load Socket.IO from CDN -->
+  <script src="https://cdn.socket.io/4.6.0/socket.io.min.js"></script>
+
+  <script>
+    // Initialize the socket connection
+    const socket = io();
+
+    // Get references to the form, input, and messages container
+    const form = document.getElementById('form');
+    const input = document.getElementById('input');
+    const messages = document.getElementById('messages');
+
+    // Handle form submission
+    form.addEventListener('submit', (e) => {
+      e.preventDefault(); // Prevent the form from submitting the traditional way
+      if (input.value) { // If the input is not empty
+        socket.emit('chat message', input.value); // Send the message to the server
+        input.value = ''; // Clear the input field
+      }
+    });
+
+    // Listen for 'chat message' event from the server
+    socket.on('chat message', (msg) => {
+      const item = document.createElement('li'); // Create a new list item
+      item.textContent = msg; // Set the text content to the received message
+      messages.appendChild(item); // Add the item to the messages list
+      messages.scrollTop = messages.scrollHeight; // Scroll to the bottom of the messages container
+    });
+  </script>
 </body>
 
 </html>

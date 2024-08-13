@@ -1,0 +1,37 @@
+In the package.json file, scripts are custom commands that can be run using npm run <script-name>. The lint:Standard and lint:fix scripts you've mentioned are typically used for linting JavaScript code using the standard linter.
+
+Here's what these scripts likely mean:
+
+    lint:Standard: This script runs the standard linter to check your code for any linting errors.
+
+    json
+
+"scripts": {
+  "lint:Standard": "standard"
+}
+
+Running npm run lint:Standard will execute the standard linter, which checks your code against the JavaScript Standard Style.
+
+lint:fix: This script runs the standard --fix command, which attempts to automatically fix any linting errors in your code.
+
+json
+
+"scripts": {
+  "lint:fix": "standard --fix"
+}
+
+Running npm run lint:fix will execute the standard linter with the --fix option, which will automatically correct some of the issues found in your code, such as formatting errors.
+
+npm i standard: This command installs the standard linter as a development dependency in your project.
+
+bash
+
+    npm i standard --save-dev
+
+    After running this, standard will be installed in your node_modules directory, and you can use it in your scripts as shown above.
+
+In summary:
+
+    lint:Standard: Runs the linter to check your code.
+    lint:fix: Runs the linter with an option to automatically fix issues.
+    npm i standard: Installs the standard linter in your project.
